@@ -1,23 +1,33 @@
-// app/screens/LoginScreen.tsx
+// app/screens/RegisterScreen.tsx
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../styles/GlobalStyles';
 
-const LoginScreen: React.FC = () => {
+const RegisterScreen: React.FC = () => {
   const navigation = useNavigation();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleRegister = () => {
+    if (password !== confirmPassword) {
+      Alert.alert("Passwords do not match", "Please make sure both passwords are the same.");
+      return;
+    }
+    // Proceed with registration logic (e.g., API call)
+    navigation.navigate('Home');
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to Derma!</Text>
+      <Text style={styles.title}>Create an Account</Text>
       <TextInput
         style={styles.input}
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
         placeholderTextColor={colors.placeholder}
       />
       <TextInput
@@ -28,11 +38,19 @@ const LoginScreen: React.FC = () => {
         secureTextEntry
         placeholderTextColor={colors.placeholder}
       />
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home' as never)}>
-        <Text style={styles.buttonText}>Log In</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Confirm Password"
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
+        secureTextEntry
+        placeholderTextColor={colors.placeholder}
+      />
+      <TouchableOpacity style={styles.button} onPress={handleRegister}>
+        <Text style={styles.buttonText}>Register</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Register' as never)}>
-        <Text style={styles.registerText}>Don't have an account? Register here</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Login' as never)}>
+        <Text style={styles.loginText}>Already have an account? Log in here</Text>
       </TouchableOpacity>
     </View>
   );
@@ -66,7 +84,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.button,
     borderRadius: 8,
-    paddingVertical: 20, // Increased vertical padding for a larger button
+    paddingVertical: 15,
     paddingHorizontal: 20,
     marginBottom: 20,
     alignItems: 'center',
@@ -74,14 +92,14 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: colors.text,
-    fontSize: 20, // Increased font size for better visibility
+    fontSize: 18,
     fontWeight: 'bold',
   },
-  registerText: {
+  loginText: {
     marginTop: 25,
     color: colors.title,
     textDecorationLine: 'underline',
   },
 });
 
-export default LoginScreen;
+export default RegisterScreen;
