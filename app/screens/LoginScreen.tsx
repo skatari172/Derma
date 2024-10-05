@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { colors } from '../styles/GlobalStyles';
+import { colors, background } from '../styles/GlobalStyles';
 
 const LoginScreen: React.FC = () => {
   const navigation = useNavigation();
