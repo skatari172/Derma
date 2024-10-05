@@ -12,7 +12,7 @@ const LoginScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome Back!</Text>
+      <Text style={styles.title}>Welcome to Derma!</Text>
       <TextInput
         style={styles.input}
         placeholder="Username"
