@@ -1,9 +1,9 @@
 // app/screens/LoginScreen.tsx
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { colors, background } from '../styles/GlobalStyles';
+import { colors } from '../styles/GlobalStyles';
 
 const LoginScreen: React.FC = () => {
   const navigation = useNavigation();
@@ -12,6 +12,10 @@ const LoginScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <Image 
+        source={require('../assets/images/icon.png')} 
+        style={styles.logo}
+      />
       <Text style={styles.title}>Welcome to Derma!</Text>
       <TextInput
         style={styles.input}
@@ -46,6 +50,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     padding: 20,
   },
+  logo: {
+    width: 100, // Adjust width as needed
+    height: 100, // Adjust height as needed
+    marginBottom: 20, // Space between logo and title
+  },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
@@ -66,7 +75,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.button,
     borderRadius: 8,
-    paddingVertical: 20, // Increased vertical padding for a larger button
+    paddingVertical: 20,
     paddingHorizontal: 20,
     marginBottom: 20,
     alignItems: 'center',
@@ -74,7 +83,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: colors.text,
-    fontSize: 20, // Increased font size for better visibility
+    fontSize: 20,
     fontWeight: 'bold',
   },
   registerText: {
