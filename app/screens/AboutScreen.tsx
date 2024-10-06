@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     backgroundColor: colors.background,
     padding: 20,
-    paddingTop: 60, // Space at the top
+    paddingTop: 60, 
   },
   goBackButton: {
     position: 'absolute',
@@ -47,20 +47,20 @@ const styles = StyleSheet.create({
     left: 20,
   },
   title: {
-    fontSize: 34, // Increased font size
+    fontSize: 34, 
     fontWeight: 'bold',
-    marginBottom: 10, // Reduced margin to move content up
+    marginBottom: 10, 
     color: colors.title,
   },
   header: {
-    fontSize: 26, // Increased font size
+    fontSize: 26, 
     fontWeight: 'bold',
-    marginTop: 15, // Reduced margin to move content up
+    marginTop: 15, 
     marginBottom: 10,
     color: colors.title,
   },
   bodyText: {
-    fontSize: 20, // Increased font size
+    fontSize: 20,
     marginBottom: 15,
     color: colors.text,
   },

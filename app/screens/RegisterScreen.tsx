@@ -1,4 +1,4 @@
-// app/screens/RegisterScreen.tsx
+
 
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
@@ -16,7 +16,7 @@ const RegisterScreen: React.FC = () => {
       Alert.alert("Passwords do not match", "Please make sure both passwords are the same.");
       return;
     }
-    // Proceed with registration logic (e.g., API call)
+
     navigation.navigate('Home');
   };
 

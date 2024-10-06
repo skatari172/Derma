@@ -9,7 +9,7 @@ const NotFoundScreen: React.FC = () => {
     <View style={styles.container}>
       <Text style={styles.title}>404 - Page Not Found</Text>
       <Text>The page you're looking for doesn't exist.</Text>
-      <Button title="Go Home" onPress={() => navigation.navigate('Login')} /> {/*Double check parameter!*/}
+      <Button title="Go Home" onPress={() => navigation.navigate('Login')} /> 
     </View>
   );
 };
