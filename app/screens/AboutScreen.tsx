@@ -21,7 +21,7 @@ const AboutScreen: React.FC = () => {
 
       <Text style={styles.header}>How It Works</Text>
       <Text style={styles.bodyText}>
-        Upload a clear, cropped image of a skin mark using our user-friendly interface. Our AI model will analyze the image and return a confidence assessment indicating whether to seek professional help. Based on the result, we advise consulting a medical professional for further evaluation.
+        Upload a clear, cropped image of a skin mark using our user-friendly interface. Our AI model will analyze the image and return a confidence assessment indicating whether the mark may be benign or malignant. Based on the result, we advise consulting a medical professional for further evaluation.
       </Text>
 
       <Text style={styles.header}>Important Notice</Text>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     backgroundColor: colors.background,
     padding: 20,
-    paddingTop: 75, // Increased space at the top
+    paddingTop: 60, // Space at the top
   },
   goBackButton: {
     position: 'absolute',
@@ -49,13 +49,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 34, // Increased font size
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 10, // Reduced margin to move content up
     color: colors.title,
   },
   header: {
     fontSize: 26, // Increased font size
     fontWeight: 'bold',
-    marginTop: 20,
+    marginTop: 15, // Reduced margin to move content up
     marginBottom: 10,
     color: colors.title,
   },
