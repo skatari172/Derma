@@ -30,12 +30,6 @@ const HomeScreen = () => {
       {/* Title */}
       <Text style={styles.title}>Welcome to the Home Page!</Text>
 
-      {/* Image in the Middle */}
-      {photoUri ? (
-        <Image source={{ uri: photoUri }} style={styles.photo} />
-      ) : (
-        <Text style={styles.placeholderText}>No photo available</Text>
-      )}
 
       {/* Bottom Bar */}
       <View style={styles.bottomBar}>
