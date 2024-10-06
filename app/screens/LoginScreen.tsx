@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
-import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { colors } from '../styles/GlobalStyles';
 import Icon from 'react-native-vector-icons/Ionicons';
+import axios from 'axios';
 
 const LoginScreen: React.FC = () => {
   const navigation = useNavigation();
@@ -10,25 +11,43 @@ const LoginScreen: React.FC = () => {
   const [password, setPassword] = useState('');
   const [isFocusedUsername, setIsFocusedUsername] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // State for showing password
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!username || !password) {
-      Alert.alert("Please input all fields");
+      Alert.alert('Error', 'Please input all fields');
       return;
     }
-    // Proceed with login logic (e.g., API call)
-    navigation.navigate('Home' as never);
+
+    try {
+      // Update the URL to match the backend route
+    const response = await axios.post('http://localhost:5000/login', { // <-- update to /login
+    username,
+    password
+    });
+
+
+      const { token } = response.data;
+      console.log('Logged in successfully:', token);
+      navigation.navigate('Home' as never);
+    } catch (error: any) {
+      if (error.response) {
+        Alert.alert('Error', error.response.data.msg || 'Invalid username or password');
+      } else if (error.request) {
+        Alert.alert('Error', 'No response from the server. Please try again later.');
+      } else {
+        Alert.alert('Error', 'An error occurred. Please try again.');
+      }
+      console.log('Login error:', error.message);
+    }
   };
 
-  // Clear input fields when the screen is focused
-  useFocusEffect(
-    React.useCallback(() => {
-      // Clear the input fields when the screen is focused
+  useEffect(() => {
+    return () => {
       setUsername('');
       setPassword('');
-    }, [])
-  );
+    };
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -45,6 +64,7 @@ const LoginScreen: React.FC = () => {
         placeholderTextColor={colors.placeholder}
         onFocus={() => setIsFocusedUsername(true)}
         onBlur={() => setIsFocusedUsername(false)}
+        autoCapitalize="none"
       />
       <View style={styles.passwordContainer}>
         <TextInput
@@ -52,10 +72,11 @@ const LoginScreen: React.FC = () => {
           placeholder="Password"
           value={password}
           onChangeText={setPassword}
-          secureTextEntry={!showPassword} // Toggle password visibility
+          secureTextEntry={!showPassword}
           placeholderTextColor={colors.placeholder}
           onFocus={() => setIsFocusedPassword(true)}
           onBlur={() => setIsFocusedPassword(false)}
+          autoCapitalize="none"
         />
         <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
           <Icon name={showPassword ? "eye-off" : "eye"} size={24} style={styles.eyeIcon} />
@@ -102,7 +123,7 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
   inputFocused: {
-    borderColor: colors.button, // Change border color on focus
+    borderColor: colors.button,
   },
   passwordContainer: {
     flexDirection: 'row',
@@ -110,9 +131,9 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   eyeIcon: {
-    marginLeft: -40, // Adjust position of the icon
+    marginLeft: -40,
     color: colors.text,
-    marginBottom: 16, // Added marginBottom of 20
+    marginBottom: 18,
   },
   button: {
     backgroundColor: colors.button,
