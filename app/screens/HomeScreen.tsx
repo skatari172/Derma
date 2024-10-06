@@ -19,7 +19,7 @@ const HomeScreen: React.FC = () => {
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('About')}>
           <Icon name="information-circle" size={30} color={colors.text} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Camera')}>
           <Icon name="camera" size={30} color={colors.text} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Gallery')}>
