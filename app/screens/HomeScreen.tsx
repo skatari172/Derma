@@ -1,14 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Ionicons'; // Import the icon library
-import { colors } from '../styles/GlobalStyles'; // Ensure to import colors
+import Icon from 'react-native-vector-icons/Ionicons';
+import { colors } from '../styles/GlobalStyles';
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.signOutButton} onPress={() => navigation.navigate('Login' as never)}>
+        <Icon name="log-out" size={30} color="#FFFFFF" />
+        <Text style={styles.signOutText}>Sign Out</Text>
+      </TouchableOpacity>
       <Text style={styles.title}>Welcome to the Home Page!</Text>
       
       <View style={styles.bottomBar}>
@@ -31,18 +35,31 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#3C3C3C',
+  },
+  signOutButton: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  signOutText: {
+    color: '#FFFFFF',
+    marginLeft: 5,
+    fontSize: 16,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: colors.title,
   },
   bottomBar: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    height: 80, // Increased height for the bottom bar
+    height: 80,
     backgroundColor: '#3C3C3C',
     flexDirection: 'row',
     justifyContent: 'space-around',
