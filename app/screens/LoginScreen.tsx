@@ -48,8 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.background,
-    padding: 0,
-    margin: 0,
+    padding: 20, // Updated padding to match RegisterScreen
   },
   logo: {
     width: 120,
