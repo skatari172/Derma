@@ -2,7 +2,6 @@ import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import * as MediaLibrary from 'expo-media-library';
-import * as FileSystem from 'expo-file-system';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function App() {
@@ -49,15 +48,15 @@ export default function App() {
   async function takePhoto() {
     if (camera) {
       const photoData = await camera.takePictureAsync();
-      const asset = await MediaLibrary.createAssetAsync(photoData.uri);
-      const album = await MediaLibrary.getAlbumAsync('images');
+      setPhoto(photoData.uri);
       
-      if(album === null){
-        await MediaLibrary.createAlbumAsync('images', asset, false);
-      } else {
-        await MediaLibrary.addAssetsToAlbumAsync([asset], album, false);
+      // Save the photo to the media library
+      try {
+        await MediaLibrary.saveToLibraryAsync(photoData.uri);
+        alert('Photo saved to media library!');
+      } catch (error) {
+        console.error('Error saving photo:', error);
       }
-      console.log("Photo saved to assests/album");
     }
   }
 
@@ -128,3 +127,5 @@ const styles = StyleSheet.create({
     margin: 20,
   },
 });
+
+

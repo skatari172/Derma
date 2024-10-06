@@ -1,20 +1,43 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react'; // Added useEffect
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { colors } from '../styles/GlobalStyles';
+import { getCapturedPhotoUri } from '../components/CameraCapture'; // Import the function to get the photo URI
 
-const HomeScreen: React.FC = () => {
+const HomeScreen = () => {
   const navigation = useNavigation();
+  const [photoUri, setPhotoUri] = useState(null);
+
+  // Fetch the photo URI when the component mounts (or when the screen is navigated to)
+  useEffect(() => {
+    const fetchPhotoUri = async () => {
+      const uri = getCapturedPhotoUri();
+      setPhotoUri(uri);
+    };
+
+    fetchPhotoUri();
+  }, []);
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.signOutButton} onPress={() => navigation.navigate('Login' as never)}>
+      {/* Sign Out Button */}
+      <TouchableOpacity style={styles.signOutButton} onPress={() => navigation.navigate('Login')}>
         <Icon name="log-out" size={30} color="#FFFFFF" />
         <Text style={styles.signOutText}>Sign Out</Text>
       </TouchableOpacity>
+
+      {/* Title */}
       <Text style={styles.title}>Welcome to the Home Page!</Text>
-      
+
+      {/* Image in the Middle */}
+      {photoUri ? (
+        <Image source={{ uri: photoUri }} style={styles.photo} />
+      ) : (
+        <Text style={styles.placeholderText}>No photo available</Text>
+      )}
+
+      {/* Bottom Bar */}
       <View style={styles.bottomBar}>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('About')}>
           <Icon name="information-circle" size={30} color={colors.text} />
@@ -53,6 +76,16 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: colors.title,
+    marginBottom: 20,
+  },
+  photo: {
+    width: 200,
+    height: 200,
+    marginBottom: 20,
+  },
+  placeholderText: {
+    color: '#FFFFFF',
+    marginBottom: 20,
   },
   bottomBar: {
     position: 'absolute',
