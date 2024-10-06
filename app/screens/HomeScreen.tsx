@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { colors } from '../styles/GlobalStyles';
@@ -9,6 +9,12 @@ const HomeScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      
+      <Image 
+        source={require('../assets/images/vector.png')}
+
+        style={styles.image}
+      />
       <TouchableOpacity style={styles.signOutButton} onPress={() => navigation.navigate('Login' as never)}>
         <Icon name="log-out" size={30} color="#FFFFFF" />
         <Text style={styles.signOutText}>Sign Out</Text>
@@ -36,6 +42,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#3C3C3C',
+  },
+  image: {
+    width: '100%', 
+    height: 200, // Set a specific height for the image
+    position: 'absolute', // Position it absolutely
+    top: 0, // Align it to the top of the screen
   },
   signOutButton: {
     position: 'absolute',
