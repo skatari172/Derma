@@ -13,7 +13,7 @@ const LoginScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Image 
-        source={require('../assets/images/icon.png')} 
+        source={require('../assets/images/logo.png')}
         style={styles.logo}
       />
       <Text style={styles.title}>Welcome to Derma!</Text>
@@ -48,17 +48,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.background,
-    padding: 20,
+    padding: 0,
+    margin: 0,
   },
   logo: {
-    width: 100, // Adjust width as needed
-    height: 100, // Adjust height as needed
-    marginBottom: 20, // Space between logo and title
+    width: 120,
+    height: 120,
+    marginBottom: 20,
   },
   title: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 40,
+    marginBottom: 30,
     color: colors.title,
   },
   input: {
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     borderColor: colors.inputBorder,
     borderWidth: 1,
     borderRadius: 8,
-    marginBottom: 25,
+    marginBottom: 15,
     paddingHorizontal: 15,
     width: '100%',
     backgroundColor: colors.inputBackground,
@@ -75,19 +76,19 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.button,
     borderRadius: 8,
-    paddingVertical: 20,
+    paddingVertical: 15,
     paddingHorizontal: 20,
-    marginBottom: 20,
+    marginBottom: 15,
     alignItems: 'center',
     width: '100%',
   },
   buttonText: {
     color: colors.text,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   registerText: {
-    marginTop: 25,
+    marginTop: 15,
     color: colors.title,
     textDecorationLine: 'underline',
   },

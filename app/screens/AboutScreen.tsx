@@ -10,9 +10,24 @@ const AboutScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.navigate('Home' as never)}>
-        <Icon name="arrow-back" size={30} style={styles.iconColor} /> 
+        <Icon name="arrow-back" size={30} style={styles.iconColor} />
       </TouchableOpacity>
-      <Text style={styles.title}>About Page</Text>
+      <Text style={styles.title}>About Us</Text>
+      
+      <Text style={styles.header}>Our Mission</Text>
+      <Text style={styles.bodyText}>
+        We strive to raise awareness about skin cancer by providing an accessible tool for early detection. Our goal is to empower individuals to take proactive steps toward their health without any obligations.
+      </Text>
+
+      <Text style={styles.header}>How It Works</Text>
+      <Text style={styles.bodyText}>
+        Upload a clear, cropped image of a skin mark using our user-friendly interface. Our AI model will analyze the image and return a confidence assessment indicating whether to seek professional help. Based on the result, we advise consulting a medical professional for further evaluation.
+      </Text>
+
+      <Text style={styles.header}>Important Notice</Text>
+      <Text style={styles.bodyText}>
+        Please be aware that our AI model does not guarantee accuracy and is not a substitute for professional medical advice. If you have concerns about your skin health, we strongly recommend seeking assistance from a qualified healthcare provider.
+      </Text>
     </View>
   );
 };
@@ -21,9 +36,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: colors.background,
     padding: 20,
+    paddingTop: 75, // Increased space at the top
   },
   goBackButton: {
     position: 'absolute',
@@ -31,18 +47,22 @@ const styles = StyleSheet.create({
     left: 20,
   },
   title: {
-    position: 'absolute',
-    top: 60,
-    left: '50%',
-    transform: [{ translateX: -50 }],
-    fontSize: 24,
+    fontSize: 34, // Increased font size
     fontWeight: 'bold',
+    marginBottom: 20,
+    color: colors.title,
+  },
+  header: {
+    fontSize: 26, // Increased font size
+    fontWeight: 'bold',
+    marginTop: 20,
     marginBottom: 10,
     color: colors.title,
   },
-  smallText: {
-    marginTop: 20,
-    textAlign: 'center',
+  bodyText: {
+    fontSize: 20, // Increased font size
+    marginBottom: 15,
+    color: colors.text,
   },
   iconColor: {
     color: '#ffffff',
