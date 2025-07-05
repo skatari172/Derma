@@ -1,9 +1,8 @@
 # Dermai: Skin Cancer Detection Tool
-# Devpost: https://devpost.com/software/dermai-mtogh3
 
 > 🏆 Winner: MLH Best AI Project with Databricks Open Source @ Knight Hacks VII
 
-## 📖 Overview
+## 📖 Overview - https://devpost.com/software/dermai-mtogh3
 Dermai is a mobile application that raises awareness about skin cancer by providing an accessible AI-powered early-detection tool. Users can capture or upload an image of a skin lesion, and our AI model analyzes it to detect potential signs of skin cancer, giving immediate feedback.
 
 ## 🚀 Features
