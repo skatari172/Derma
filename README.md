@@ -1,5 +1,5 @@
 # Dermai: Skin Cancer Detection Tool
-#Devpost: https://devpost.com/software/dermai-mtogh3
+# Devpost: https://devpost.com/software/dermai-mtogh3
 
 > 🏆 Winner: MLH Best AI Project with Databricks Open Source @ Knight Hacks VII
 
